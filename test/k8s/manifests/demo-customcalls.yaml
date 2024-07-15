@@ -99,7 +99,7 @@ metadata:
 spec:
   containers:
   - name: cilium-builder
-    image: quay.io/cilium/cilium-builder:12c647b7b603b363b93734681e2f99baf9471c93@sha256:afbbcc45378ece6bb8093a73358fa0ae7c56b91288808c3cd8ac85460ed6e458
+    image: quay.io/cilium/cilium-builder:66d4e37e486cebc8d2acd1ec008c7729c1697895@sha256:e3ac5a7a545eab002fe0bb86d154268d2efdd5921e2a7b80e4b8685b7c67131b
     workingDir: /cilium
     command: ["/bin/sh", "-c"]
     args:
