@@ -202,6 +202,14 @@ func CleanupEndpoint() {
 					scopedLog.WithError(err).Infof("Couldn't delete cilium-health %s device",
 						option.Config.DatapathMode)
 				}
+				for {
+					if _, err := netlink.LinkByName(iface); err == nil {
+						scopedLog.Debugf("Waiting for %s teardown", iface)
+						time.Sleep(100 * time.Millisecond)
+						continue
+					}
+					break
+				}
 			} else {
 				scopedLog.WithError(err).Debug("Didn't find existing device")
 			}
