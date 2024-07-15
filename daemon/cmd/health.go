@@ -84,6 +84,10 @@ func (d *Daemon) initHealth(spec *healthApi.Spec, cleaner *daemonCleanup, sysctl
 					var launchErr error
 					d.cleanupHealthEndpoint()
 
+					if client != nil {
+						log.Debugf("lxc_health: ping timeout: %v", time.Since(lastSuccessfulPing))
+					}
+
 					client, launchErr = health.LaunchAsEndpoint(
 						ctx,
 						d,
